@@ -1,0 +1,28 @@
+<div class="toolbar-layout">
+  <div class="logo-part">
+    <div class="box">
+      <span class="box-text">A.B</span>
+    </div>
+  </div>
+  <div class="navigation-part" *ngIf="isTopNavVisible">
+    <div class="nav-item" *ngFor="let item of refCollection;let i=index;">
+      <span class="nav-item-text" (click)="navigateTo(item)">
+        {{item}}
+      </span>
+    </div>
+  </div>
+  <div class="menu-part">
+    <div class="menu-container" (click)="toggleMainNav()">
+      <div class="hamburger-line" [ngStyle]="{'background-color':hamburgerMenuColor}" [class.open]="isMainNavActive"></div>
+      <div class="hamburger-line" [ngStyle]="{'background-color':hamburgerMenuColor}" [class.open]="isMainNavActive"></div>
+      <div class="hamburger-line" [ngStyle]="{'background-color':hamburgerMenuColor}" [class.open]="isMainNavActive"></div>
+    </div>
+  </div>
+</div>
+<div class="main-nav" [class.main-nav-active]="isMainNavActive">
+  <ul class="navigation" [@listAnimation]="navCollection.length">
+    <li class="navigation-item" *ngFor="let item of navCollection;let i=index">
+     <h2 (click)="navigateTo(item)">{{item}}</h2> 
+    </li>
+  </ul>
+</div>
